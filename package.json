@@ -1,0 +1,24 @@
+{
+  "name": "playwright-qa-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TyrekePitter/playwright-qa-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TyrekePitter/playwright-qa-portfolio/issues"
+  },
+  "homepage": "https://github.com/TyrekePitter/playwright-qa-portfolio#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
+  }
+}
