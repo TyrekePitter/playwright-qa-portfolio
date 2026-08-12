@@ -8,6 +8,7 @@ export default defineConfig({
   reporter: "html",
   use: {
     trace: "on-first-retry",
+    testIdAttribute: "data-test",
   },
   projects: [
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
