@@ -61,42 +61,42 @@ test.describe("Login", () => {
         );
     });
 
-test("an empty username with a password filled still reports the username, proving username is validated first", async ({ page }) => {
-  await page.getByTestId("password").fill("secret_sauce");
-  await page.getByTestId("login-button").click();
+    test("an empty username with a password filled still reports the username, proving username is validated first", async ({ page }) => {
+        await page.getByTestId("password").fill("secret_sauce");
+        await page.getByTestId("login-button").click();
 
-  await expect(page.getByTestId("error")).toHaveText(
-    "Epic sadface: Username is required"
-  );
-});
+        await expect(page.getByTestId("error")).toHaveText(
+            "Epic sadface: Username is required"
+        );
+    });
 
-const failureCases = [
-  { username: "locked_out_user", password: "secret_sauce" },
-  { username: "standard_user", password: "wrong_password" },
-  { username: "", password: "" },
-  { username: "standard_user", password: "" },
-];
+    const failureCases = [
+        { username: "locked_out_user", password: "secret_sauce" },
+        { username: "standard_user", password: "wrong_password" },
+        { username: "", password: "" },
+        { username: "standard_user", password: "" },
+    ];
 
-for (const { username, password } of failureCases) {
-  test(`every failure message opens with the Epic sadface prefix: "${username}" / "${password}"`, async ({ page }) => {
-    if (username) await page.getByTestId("username").fill(username);
-    if (password) await page.getByTestId("password").fill(password);
-    await page.getByTestId("login-button").click();
+    for (const { username, password } of failureCases) {
+        test(`every failure message opens with the Epic sadface prefix: "${username}" / "${password}"`, async ({ page }) => {
+            if (username) await page.getByTestId("username").fill(username);
+            if (password) await page.getByTestId("password").fill(password);
+            await page.getByTestId("login-button").click();
 
-    await expect(page.getByTestId("error")).toContainText("Epic sadface: ");
-  });
-}
+            await expect(page.getByTestId("error")).toContainText("Epic sadface: ");
+        });
+    }
 
-test("the error banner survives typing and only clears on submit", async ({ page }) => {
-  await page.getByTestId("login-button").click();
-  await expect(page.getByTestId("error")).toHaveText(
-    "Epic sadface: Username is required"
-  );
+    test("the error banner survives typing and only clears on submit", async ({ page }) => {
+        await page.getByTestId("login-button").click();
+        await expect(page.getByTestId("error")).toHaveText(
+            "Epic sadface: Username is required"
+        );
 
-  await page.getByTestId("username").fill("standard_user");
+        await page.getByTestId("username").fill("standard_user");
 
-  await expect(page.getByTestId("error")).toHaveText(
-    "Epic sadface: Username is required"
-  );
-});
+        await expect(page.getByTestId("error")).toHaveText(
+            "Epic sadface: Username is required"
+        );
+    });
 });
